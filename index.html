@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTILONOSPES - Catálogo Premium</title>
+    <link rel="icon" type="image/png" href="favicon-styp.png">
+    <style>
+        /* Configurações Globais de Reset e Performance */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0b0b0d; /* Fundo preto absoluto eveludado da marca */
+            color: #ffffff;
+            font-family: 'Times New Roman', Times, serif;
+            padding-bottom: 40px;
+            overflow-x: hidden;
+        }
+        
+        /* Banner Responsivo Superior */
+        .header-banner-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 25px auto;
+            text-align: center;
+        }
+        .header-banner {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Container do Grid de Catálogo */
+        .catalog-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        /* Container Individual do Produto com Moldura Dourada Cintilante */
+        .product-card {
+            background-color: #121215;
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2), inset 0 0 10px rgba(212, 175, 55, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.45), inset 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Divisão Interna do Layout (Lado a Lado Flex) */
+        .card-main-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        /* Painel de Informações Técnicas */
+        .info-panel {
+            flex: 1.1;
+            padding-right: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Caixinha Taupe Clássica */
+        .taupe-box {
+            background-color: #534741;
+            border: 1px solid #6b5c55;
+            border-radius: 8px;
+            padding: 12px 8px;
+            text-align: center;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .shoe-type {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #f3e5ab;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+        .shoe-meta {
+            font-family: Arial, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        .price-tag {
+            background-color: #c5a059;
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: bold;
+            padding: 4px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .shoe-desc {
+            font-size: 0.85rem;
+            color: #bfa37a;
+            font-style: italic;
+            line-height: 1.3;
+            padding-left: 2px;
+        }
+
+        /* Painel da Imagem Real do GitHub */
+        .image-panel {
+            flex: 0.9;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .shoe-image {
+            width: 100%;
+            max-width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            border: 1px solid #c5a059;
+            background-color: #1c1c22;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Botão Dourado Brilhante de Compra com Texto em Preto */
+        .btn-buy {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #c5a059 100%);
+            background-size: 200% auto;
+            color: #000000; /* Texto estritamente preto dentro do botão */
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-buy:hover {
+            background-position: right center;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BANNER TOPO SINCRONIZADO DO REPOSITÓRIO -->
+    <div class="header-banner-container">
+        <img src="banner-styp.gif" alt="ESTILONOSPES Banner" class="header-banner">
+    </div>
+
+    <!-- GRADE DE CALÇADOS AUTOMATIZADA -->
+    <main class="catalog-container">
+
+        <!-- PRODUTO 003 -->
+        <div class="product-card">
+            <div class="card-main-content">
+                <div class="info-panel">
+                    <div class="taupe-box">
+                        <div class="shoe-type">Plataforma</div>
+                        <div class="shoe-meta">TAM: 37<br>CÓD: 003</div>
+                        <div class="price-tag">R$ 110,00</div>
+                    </div>
+                    <div class="shoe-desc">Tiras em X bege trançadas com linha central.</div>
+                </div>
+                <div class="image-panel">
+                    <img src="produto-003.png" alt="Plataforma 003" class="shoe-image">
+                </div>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5521976394834&text=Ol%C3%A1%21%20Quero%20a%20Plataforma%20de%20R%24%20110%2C00%20%28C%C3%B3d%3A%20003%20-%20Tam%3A%2037%29" target="_blank" class="btn-buy">COMPRAR</a>
+        </div>
+
+        <!-- PRODUTO 004 -->
+        <div class="product-card">
+            <div class="card-main-content">
+                <div class="info-panel">
+                    <div class="taupe-box">
+                        <div class="shoe-type">Plataforma</div>
+                        <div class="shoe-meta">TAM: 36<br>CÓD: 004</div>
+                        <div class="price-tag">R$ 110,00</div>
+                    </div>
+                    <div class="shoe-desc">Duas tiras horizontais paralelas texturizadas.</div>
+                </div>
+                <div class="image-panel">
+                    <img src="produto-004.png" alt="Plataforma 004" class="shoe-image">
+                </div>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5521976394834&text=Ol%C3%A1%21%20Quero%20a%20Plataforma%20de%20R%24%20110%2C00%20%28C%C3%B3d%3A%20004%20-%20Tam%3A%2036%29" target="_blank" class="btn-buy">COMPRAR</a>
+        </div>
+
+        <!-- PRODUTO 011 -->
+        <div class="product-card">
+            <div class="card-main-content">
+                <div class="info-panel">
+                    <div class="taupe-box">
+                        <div class="shoe-type">Plataforma</div>
+                        <div class="shoe-meta">TAM: 39<br>CÓD: 011</div>
+                        <div class="price-tag">R$ 110,00</div>
+                    </div>
+                    <div class="shoe-desc">Estampa de monograma luxo marrom e dourado.</div>
+                </div>
+                <div class="image-panel">
+                    <img src="produto-011.png" alt="Plataforma 011" class="shoe-image">
+                </div>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5521976394834&text=Ol%C3%A1%21%20Quero%20a%20Plataforma%20de%20R%24%20110%2C00%20%28C%C3%B3d%3A%20011%2%20-%20Tam%3A%2039%29" target="_blank" class="btn-buy">COMPRAR</a>
+        </div>
+
+        <!-- PRODUTO 007 -->
+        <div class="product-card">
+            <div class="card-main-content">
+                <div class="info-panel">
+                    <div class="taupe-box">
+                        <div class="shoe-type">Papete</div>
+                        <div class="shoe-meta">TAM: 36<br>CÓD: 007</div>
+                        <div class="price-tag">R$ 79,99</div>
+                    </div>
+                    <div class="shoe-desc">Preta inteira com textura e gota dourada central.</div>
+                </div>
+                <div class="image-panel">
+                    <img src="produto-007.png" alt="Papete 007" class="shoe-image">
+                </div>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5521976394834&text=Ol%C3%A1%21%20Quero%20a%20Papete%20de%20R%24%2079%2C99%20%28C%C3%B3d%3A%20007%20-%20Tam%3A%2036%29" target="_blank" class="btn-buy">COMPRAR</a>
+        </div>
+
+        <!-- PRODUTO 005 -->
+        <div class="product-card">
+            <div class="card-main-content">
+                <div class="info-panel">
+                    <div class="taupe-box">
+                        <div class="shoe-type">Papete</div>
+                        <div class="shoe-meta">TAM: 37<br>CÓD: 005</div>
+                        <div class="price-tag">R$ 79,99</div>
+                    </div>
+                    <div class="shoe-desc">Base off-white com palha e tiras douradas.</div>
+                </div>
+                <div class="image-panel">
+                    <img src="produto-005.png" alt="Papete 005" class="shoe-image">
+                </div>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5521976394834&text=Ol%C3%A1%21%20Quero%20a%20Papete%20de%20R%24%2079%2C99%20%28C%C3%B3d%3A%20005%20-%20Tam%3A%2037%29" target="_blank" class="btn-buy">COMPRAR</a>
+        </div>
+
+        <!-- PRODUTO 002 -->
+        <div class="product-card">
+            <div class="card-main-content">
+                <div class="info-panel">
+                    <div class="taupe-box">
+                        <div class="shoe-type">Plataforma</div>
+                        <div class="shoe-meta">TAM: 36<br>CÓD: 002</div>
+                        <div class="price-tag">R$ 110,00</div>
+                    </div>
+                    <div class="shoe-desc">Estilo chinelo de dedo cor marrom conhaque texturizado.</div>
+                </div>
+                <div class="image-panel">
+                    <img src="produto-002.png" alt="Plataforma 002" class="shoe-image">
+                </div>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5521976394834&text=Ol%C3%A1%21%20Quero%20a%20Plataforma%20de%20R%24%20110%2C00%20%28C%C3%B3d%3A%20002%20-%20Tam%3A%2036%29" target="_blank" class="btn-buy">COMPRAR</a>
+        </div>
+
+        <!-- PRODUTO 014 -->
+        <div class="product-card">
+            <div class="card-main-content">
+                <div class="info-panel">
+                    <div class="taupe-box">
+                        <div class="shoe-type">Plataforma</div>
+                        <div class="shoe-meta">TAM: 38<br>CÓD: 014</div>
+                        <div class="price-tag">R$ 110,00</div>
+                    </div>
+                    <div class="shoe-desc">Tira larga inteiramente preta com padrão xadrez.</div>
+                </div>
+                <div class="image-panel">
+                    <img src="produto-014.png" alt="Plataforma 014" class="shoe-image">
+                </div>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5521976394834&text=Ol%C3%A1%21%20Quero%20a%20Plataforma%20de%20R%24%20110%2C00%20%28C%C3%B3d%3A%20014%20-%20Tam%3A%2038%29" target="_blank" class="btn-buy">COMPRAR</a>
+        </div>
+
+        <!-- PRODUTO 006 -->
+        <div class="product-card">
+            <div class="card-main-content">
+                <div class="info-panel">
+                    <div class="taupe-box">
+                        <div class="shoe-type">Papete</div>
+                        <div class="shoe-meta">TAM: 38<br>CÓD: 006</div>
+                        <div class="price-tag">R$ 79,99</div>
+                    </div>
+                    <div class="shoe-desc">Base caramelo com juta natural e fios dourados.</div>
+                </div>
+                <div class="image-panel">
+                    <img src="produto-006.png" alt="Papete 006" class="shoe-image">
+                </div>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5521976394834&text=Ol%C3%A1%21%20Quero%20a%20Papete%20de%20R%24%2079%2C99%20%28C%C3%B3d%3A%20006%20-%20Tam%3A%2038%29" target="_blank" class="btn-buy">COMPRAR</a>
+        </div>
+
+        <!-- PRODUTO 001 -->
+        <div class="product-card">
+            <div class="card-main-content">
+                <div class="info-panel">
+                    <div class="taupe-box">
+                        <div class="shoe-type">Plataforma</div>
+                        <div class="shoe-meta">TAM: 36<br>CÓD: 001</div>
+                        <div class="price-tag">R$ 110,00</div>
+                    </div>
+                    <div class="shoe-desc">Preta anatômica com adereço esférico frontal.</div>
+                </div>
+                <div class="image-panel">
+                    <img src="produto-001.png" alt="Plataforma 001" class="shoe-image">
+                </div>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5521976394834&text=Ol%C3%A1%21%20Quero%20a%20Plataforma%20de%20R%24%20110%2C00%20%28C%C3%B3d%3A%20001%20-%20Tam%3A%2036%29" target="_blank" class="btn-buy">COMPRAR</a>
+        </div>
+
+    </main>
+
+</body>
+</html>
+
